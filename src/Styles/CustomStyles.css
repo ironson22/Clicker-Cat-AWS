@@ -1,0 +1,42 @@
+.logoContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.logo{
+    width: 35%;
+}
+
+.logo-section{
+    padding-bottom: 0;
+}
+
+.catImage {
+    width: 500px;
+    height: 500px;
+}
+
+.generatorSection {
+    display: flex;
+}
+
+.cardStyles{
+    width: 550px;
+    height: 550px;
+    margin: auto;
+}
+
+.catButton {
+    margin-top: 20px;
+    margin-left: 170px;
+}
+
+.cardContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.admin-button{
+    margin-top: 1%;
+    margin-left: 1%;
+}
