@@ -42,5 +42,9 @@
   },
   "devDependencies": {
     "react-styleguidist": "^13.0.0"
+  },
+  "engines": {
+    "node": "14.17.6",
+    "npm": "6.14.15"
   }
 }
