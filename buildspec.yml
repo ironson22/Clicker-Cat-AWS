@@ -1,13 +1,25 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      nodejs: 16
   pre_build:
     commands:
+      - echo Installing source NPM dependencies...
       - npm install
   build:
     commands:
+      - echo Build Starting on `date`
       - npm run build
   post_build:
     commands:
-      - aws s3 cp --recursive ./build s3://www.oncloudconsulting/
-      - aws cloudfront create-invalidation --distribution-id EBSCDGGY05VD1 --path /\*
+      - echo Build completed
+
+# Include pnly files required for your applications to run .
+artifacts:
+  files:
+  - server.js
+  - Procfile
+  - build/**/*
+  - public/**/*
