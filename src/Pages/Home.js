@@ -26,6 +26,7 @@ const Home = () => {
         return(
             <div>
                 <section className="section">
+                    <h1>Test</h1>
                     <CatGenerator />
                 </section>
             </div>
