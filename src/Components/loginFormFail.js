@@ -6,6 +6,8 @@ import { createSearchParams, useNavigate } from "react-router-dom";
 import dataSource from "../datasource.js";
 
 const LoginFormFail = () => {
+  //log that we have enter the method
+  window.logger._LTracker.push("Entered LoginFormFail()");
   //User email variable
   const [newEmail, setNewEmail] = useState('');
   //User password variable
@@ -15,15 +17,26 @@ const LoginFormFail = () => {
 
   //Function to update the email variable
   const updateEmail = (event) => {
+    //Log that we have entered the method
+    window.logger._LTracker.push("Entered LoginFormFail.updateEmail()");
     setNewEmail(event.target.value);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving LoginFormFail.updateEmail()");
   };
   //Function to update the password variable
   const updatePassword = (event) => {
+    //Log that we have entered the method
+    window.logger._LTracker.push("Entered LoginFormFail.updatePassword()");
     setNewPassword(event.target.value);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving LoginFormFail.updatePassword()");
   };
 
   //Function to handle form submission
   const handleFormSubmit = (event) => {
+    //Log that we have entered the method
+    window.logger._LTracker.push("Entered LoginFormFail.handleFormSubmit()");
+    //prevent defaults
     event.preventDefault();
 
     //Log the submission
@@ -39,10 +52,14 @@ const LoginFormFail = () => {
 
     //Call the api function
     saveUser(User);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving LoginFormFail.handleFormSubmit()");
   };
 
   //Function to call the api and login the user
   const saveUser = async (user) => {
+    //Log that we have entered the method
+    window.logger._LTracker.push("Entered LoginFormFail.saveUser()");
     //Call the api and save the response
     let response = await dataSource.post("/users/login", user);
 
@@ -54,6 +71,8 @@ const LoginFormFail = () => {
     //else there was a problem so navigate back to the login form with a failure id
     if (response.status === 200)
     {
+      //Log that we are navigating to the home page
+      window.logger._LTracker.push("Successfull Login, Going to home");
       navigate({
         pathname: "/home",
         search: createSearchParams({
@@ -61,6 +80,8 @@ const LoginFormFail = () => {
         }).toString()
       });
     } else {
+      //Log that we are navigating to the login page
+      window.logger._LTracker.push("Unsuccessfull Login, Going to login");
       navigate({
         pathname: "/",
         search: createSearchParams({
@@ -68,6 +89,8 @@ const LoginFormFail = () => {
         }).toString()
       });
     }
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving LoginFormFail.saveUser()");
   }; 
 
     //Return the form

@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import dataSource from "../datasource.js";
 
 const RegisterForm = () => {
+  //Log that we are entering the method
+  window.logger._LTracker.push("Entered RegisterForm()");
   //Email from the user
   const [newEmail, setNewEmail] = useState('');
   //Password from the user
@@ -17,19 +19,34 @@ const RegisterForm = () => {
 
   //Function to update the email variable
   const updateEmail = (event) => {
+    //Log that we are entering the method
+    window.logger._LTracker.push("Entered RegisterForm.updateEmail()");
     setNewEmail(event.target.value);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving RegisterForm.updateEmail()");
   };
   //Function to update the password variable
   const updatePassword = (event) => {
+    //Log that we are entering the method
+    window.logger._LTracker.push("Entered RegisterForm.updatePassword()");
     setNewPassword(event.target.value);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving RegisterForm.updatePassword()");
   };
   //Function to update the name variable
   const updateName = (event) => {
+    //Log that we are entering the method
+    window.logger._LTracker.push("Entered RegisterForm.updateName()");
     setNewName(event.target.value);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving RegisterForm.updateName()");
   };
 
   //Function to handle a form submission
   const handleFormSubmit = (event) => {
+    //Log that we are entering the method
+    window.logger._LTracker.push("Entered RegisterForm.handleFormSubmit()");
+    //Prevent defaults
     event.preventDefault();
 
     //Log a successful submission
@@ -47,10 +64,14 @@ const RegisterForm = () => {
 
     //Call the api function
     saveUser(newUser);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving RegisterForm.handleFormSubmit()");
   };
 
   //Call to the API to save a user to the database
   const saveUser = async (user) => {
+    //Log that we are entering the method
+    window.logger._LTracker.push("Entered RegisterForm.saveUser()");
     //Send the request and save the response
     let response = await dataSource.post("/users", user);
 
@@ -60,6 +81,8 @@ const RegisterForm = () => {
 
     //Navigate home
     navigate("/home");
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving RegisterForm.saveUser()");
   };  
 
     //Returns the form

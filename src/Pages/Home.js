@@ -5,6 +5,8 @@ import { useSearchParams } from "react-router-dom";
 import "../Styles/CustomStyles.css"
 
 const Home = () => {
+    //Log that we are entering the page
+    window.logger._LTracker.push("Entered Home()");
     //Parameters used for the role
     const [searchparams] = useSearchParams();
 
@@ -14,6 +16,8 @@ const Home = () => {
     {
         //Returns the home page view
         return(
+            //Log that we are showing the admin button
+            window.logger._LTracker.push("Showing Admin Button"),
             <div>
                 <a href="/admin" className="button is-link admin-button">Admin Console</a>
                 <section className="section">
@@ -22,6 +26,8 @@ const Home = () => {
             </div>
         );
     } else {
+        //Log that we are showing the normal view
+        window.logger._LTracker.push("Showing Normal View");
         //Returns the home page view
         return(
             <div>

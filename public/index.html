@@ -9,6 +9,19 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <!-- This the script to add Loggly JavaScript Library -->
+    <script type="text/javascript" src="https://cloudfront.loggly.com/js/loggly.tracker-2.2.4.min.js"></script>
+    <!-- This is the script to initialize Loggly JavaScript Library -->
+    <script>
+      var _LTracker = _LTracker || [];
+      window.logger = { _LTracker: _LTracker}
+      _LTracker.push({
+      'logglyKey': 'ee935459-ff10-4df3-b571-125d643d083d',
+      'sendConsoleErrors': true,
+      'tag': 'javascript-logs'
+  });
+  // The source for the code above is from thier Github documentation: https://github.com/loggly/loggly-jslogger
+    </script>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a

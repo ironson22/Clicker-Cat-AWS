@@ -6,6 +6,8 @@ import { createSearchParams, useNavigate } from "react-router-dom";
 import dataSource from "../datasource.js";
 
 const LoginForm = () => {
+  //log that we have enter the method
+  window.logger._LTracker.push("Entered LoginForm()");
   //User email variable
   const [newEmail, setNewEmail] = useState('');
   //User password variable
@@ -15,15 +17,26 @@ const LoginForm = () => {
 
   //Function to update the email variable
   const updateEmail = (event) => {
+    //Log that we have entered the method
+    window.logger._LTracker.push("Entered LoginForm.updateEmail()");
     setNewEmail(event.target.value);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving LoginForm.updateEmail()");
   };
   //Function to update the password variable
   const updatePassword = (event) => {
+    //Log that we have entered the method
+    window.logger._LTracker.push("Entered LoginForm.updatePassword()");
     setNewPassword(event.target.value);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving LoginForm.updatePassword()");
   };
 
   //Function to handle form submission
   const handleFormSubmit = (event) => {
+    //Log that we have entered the method
+    window.logger._LTracker.push("Entered LoginForm.handleFormSubmit()");
+    //prevent defaults
     event.preventDefault();
 
     //Log the submission
@@ -39,10 +52,14 @@ const LoginForm = () => {
 
     //Call the api function
     saveUser(User);
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving LoginForm.handleFormSubmit()");
   };
 
   //Function to call the api and login the user
   const saveUser = async (user) => {
+    //Log that we have entered the method
+    window.logger._LTracker.push("Entered LoginForm.saveUser()");
     //Call the api and save the response
     let response = await dataSource.post("/users/login", user);
 
@@ -54,6 +71,8 @@ const LoginForm = () => {
     //else there was a problem so navigate back to the login form with a failure id
     if (response.status === 200)
     {
+      //Log that a user has been saved
+      window.logger._LTracker.push("User saved");
       navigate({
         pathname: "/home",
         search: createSearchParams({
@@ -61,6 +80,8 @@ const LoginForm = () => {
         }).toString()
       });
     } else {
+      //Log that a user has not been saved
+      window.logger._LTracker.push("User not saved");
       navigate({
         pathname: "/",
         search: createSearchParams({
@@ -68,6 +89,8 @@ const LoginForm = () => {
         }).toString()
       });
     }
+    //Log that we are leaving the method
+    window.logger._LTracker.push("Leaving LoginForm.saveUser()");
   };  
 
     //Return the form
