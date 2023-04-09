@@ -32,7 +32,6 @@ const Home = () => {
         return(
             <div>
                 <section className="section">
-                    <div>This is a pipeline test</div>
                     <CatGenerator />
                 </section>
             </div>
