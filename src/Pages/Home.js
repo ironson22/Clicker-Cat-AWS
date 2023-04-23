@@ -31,6 +31,7 @@ const Home = () => {
         //Returns the home page view
         return(
             <div>
+                <div>Delete this message</div>
                 <section className="section">
                     <CatGenerator />
                 </section>
